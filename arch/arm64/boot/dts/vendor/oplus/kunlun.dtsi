@@ -1,0 +1,29 @@
+// SPDX-License-Identifier: GPL-2.0-only
+/*
+ * Copyright (C) 2018-2020 Oplus. All rights reserved.
+ */
+/* #ifdef OPLUS_ARCH_EXTENDS */
+/* Nan.Zhong@MULTIMEDIA.AUDIODRIVER.MACHINE, 2020/08/28, Add for oplus extend aduio config */
+#include "kunlun-lito-audio-overlay.dtsi"
+/* #endif OPLUS_ARCH_EXTENDS */
+
+&soc {
+    //#ifdef OPLUS_FEATURE_TP_BASIC
+    /* Qicai.Gu@BSP.TP, 2020/07/30, Add for sim detect */
+	oplus_sim_detect {
+		compatible = "oplus, sim_detect";
+		Hw,sim_det = <&tlmm 82 0>;
+	};
+    //#endif /* OPLUS_FEATURE_TP_BASIC */
+};
+
+//#ifdef OPLUS_BUG_STABALITY
+/* Zhaoxinyu@display.driver. 2020/08/20 */
+&L5P {
+        reg =  /bits/ 16 <0x4400>;
+        regulator-min-microvolt = <1500000>;
+        regulator-max-microvolt = <1500000>;
+        //qcom,min-dropout-voltage = <300000>;
+        regulator-boot-on;
+};
+//#endif /*OPLUS_BUG_STABALITY*/
